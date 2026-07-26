@@ -28,19 +28,6 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Lecture09 API services");
 });
 
-app.get("/me", (req: Request, res: Response) => {
-  res.status(200).json({
-    success: true,
-    message: "Student Information",
-    data: {
-      studentId: "600610999",
-      firstName: "Dome",
-      lastName: "Potikanond",
-      program: "CPE",
-      section: "001",
-    },
-  });
-});
 
 app.use("/api/v2/students", studentRouter_v2);
 app.use("/api/v3/students", studentRouter_v3);
