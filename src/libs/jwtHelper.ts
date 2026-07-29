@@ -1,19 +1,13 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
+
 import { type UserPayload } from "./types.ts";
 
-// In a real project this should come from an environment variable
-// e.g. process.env.JWT_SECRET
-const JWT_SECRET = process.env.JWT_SECRET || "lab09-secret-key";
-const JWT_EXPIRES_IN = "1d";
+// Get JWT_SECRET_KEY from .env file (add JWT_SECRET=<your-secret> to .env)
+const jwt_secret = process.env.JWT_SECRET || "this_is_my_secret";
+const JWT_EXPIRES_IN = "30m";
 
 export function generateToken(payload: UserPayload): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
-}
-
-export function verifyToken(token: string): UserPayload | null {
-  try {
-    return jwt.verify(token, JWT_SECRET) as UserPayload;
-  } catch (err) {
-    return null;
-  }
+  return jwt.sign(payload, jwt_secret, { expiresIn: JWT_EXPIRES_IN });
 }

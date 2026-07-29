@@ -10,7 +10,7 @@ import studentRouter_v2 from "./routes/studentsRoutes_v2.ts";
 import studentRouter_v3 from "./routes/studentsRoutes_v3.ts";
 import courseRouter_v2 from "./routes/coursesRouters_v2.ts";
 import enrollmentRouter_v2 from "./routes/enrollmentsRoutes.ts";
-import authRouter from "./routes/authRoutes.ts";
+import userRouter_v2 from "./routes/usersRoutes.ts";
 import meRouter from "./routes/meRoutes.ts";
 
 const app = express();
@@ -36,7 +36,7 @@ app.use("/api/v2/students", studentRouter_v2);
 app.use("/api/v3/students", studentRouter_v3);
 app.use("/api/v2/courses", courseRouter_v2);
 app.use("/api/v2/enrollments", enrollmentRouter_v2);
-app.use("/api", authRouter); // POST /api/login
+app.use("/api/v2/users", userRouter_v2); // GET/POST login,logout,reset
 app.use("/api/me", meRouter); // GET /api/me
 
 // endpoint check middleware
